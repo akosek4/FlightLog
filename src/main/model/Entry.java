@@ -10,12 +10,12 @@ public class Entry {
     private TypeOfTime typeOfTime;
     private FlightCondition condition;
     private int landings;
-    private int totalDuration;
+    private double totalDuration;
     private String comments;
 
     public Entry(Date date, String makeAndModel, String identity, Location location,
                  TypeOfTime typeOfTime, FlightCondition condition, int landings,
-                 int totalDuration, String comments) {
+                 double totalDuration, String comments) {
         this.date = date;
         this.makeAndModel = makeAndModel;
         this.identity = identity;
@@ -57,7 +57,7 @@ public class Entry {
         return landings;
     }
 
-    public int getTotalDuration() {
+    public double getTotalDuration() {
         return totalDuration;
     }
 
@@ -93,7 +93,7 @@ public class Entry {
         this.landings = landings;
     }
 
-    public void setTotalDuration(int totalDuration) {
+    public void setTotalDuration(double totalDuration) {
         this.totalDuration = totalDuration;
     }
 

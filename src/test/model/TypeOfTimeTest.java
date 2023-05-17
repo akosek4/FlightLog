@@ -1,22 +1,19 @@
 package test.model;
 
+import main.model.TypeOfTime;
+import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class TypeOfTimeTest {
-    private int Dual;
-    private int PIC;
+    private TypeOfTime dual = new TypeOfTime("Dual", 10.0);
+    private TypeOfTime pic = new TypeOfTime("PIC", 11.0);
 
-    public TypeOfTimeTest(String type, int time) {
-        if (type == "Dual") {
-            Dual = time;
-        } else if (type == "PIC") {
-            PIC = time;
-        }
-    }
-
-    public int getDual() {
-        return Dual;
-    }
-
-    public int getPIC() {
-        return PIC;
+    @Test
+    public void constructorTest() {
+        assertEquals(10.0, dual.getDual());
+        assertEquals(0.0, dual.getPIC());
+        assertEquals(11.0, pic.getPIC());
+        assertEquals(0.0, pic.getDual());
     }
 }

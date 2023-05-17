@@ -1,10 +1,10 @@
 package main.model;
 
 public class TypeOfTime {
-    private int Dual;
-    private int PIC;
+    private double Dual = 0.0;
+    private double PIC = 0.0;
 
-    public TypeOfTime(String type, int time) {
+    public TypeOfTime(String type, double time) {
         if (type == "Dual") {
             Dual = time;
         } else if (type == "PIC") {
@@ -12,11 +12,11 @@ public class TypeOfTime {
         }
     }
 
-    public int getDual() {
+    public double getDual() {
         return Dual;
     }
 
-    public int getPIC() {
+    public double getPIC() {
         return PIC;
     }
 }

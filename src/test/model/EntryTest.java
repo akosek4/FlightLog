@@ -1,104 +1,92 @@
 package test.model;
 
+import main.model.Entry;
+import main.model.FlightCondition;
+import main.model.Location;
+import main.model.TypeOfTime;
+import org.junit.Test;
+
 import java.util.Date;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class EntryTest {
-    private Date date;
-    private String makeAndModel;
-    private String identity;
-    private LocationTest location;
-    private TypeOfTimeTest typeOfTime;
-    private FlightConditionTest condition;
-    private int landings;
-    private int totalDuration;
-    private String comments;
+    private Date date = new Date(2023, 5, 17);
+    private Location location = new Location("SFO", "YVR");
+    private TypeOfTime typeOfTime = new TypeOfTime("Dual", 1.2);
+    private FlightCondition condition = new FlightCondition("day", false, 1.2);
+    private Entry entry = new Entry(date, "C-150", "10557", location, typeOfTime, condition,
+            3, 1.2, "no comments");
 
-    public EntryTest(Date date, String makeAndModel, String identity, LocationTest location,
-                     TypeOfTimeTest typeOfTime, FlightConditionTest condition, int landings,
-                     int totalDuration, String comments) {
-        this.date = date;
-        this.makeAndModel = makeAndModel;
-        this.identity = identity;
-        this.location = location;
-        this.typeOfTime = typeOfTime;
-        this.condition = condition;
-        this.landings =  landings;
-        this.totalDuration = totalDuration;
-        this.comments = comments;
+    @Test
+    public void constructorTest() {
+        assertEquals(date, entry.getDate());
+        assertEquals("C-150", entry.getMakeAndModel());
+        assertEquals("10557", entry.getIdentity());
+        assertEquals(location, entry.getLocation());
+        assertEquals(typeOfTime, entry.getTypeOfTime());
+        assertEquals(condition, entry.getCondition());
+        assertEquals(3, entry.getLandings());
+        assertEquals(1.2, entry.getTotalDuration());
+        assertEquals("no comments", entry.getComments());
     }
 
 
-    //Getters and Setters
-
-    public Date getDate() {
-        return date;
+    @Test
+    public void setDateTest() {
+        Date nd = new Date(2023, 5, 18);
+        entry.setDate(nd);
+        assertEquals(nd, entry.getDate());
     }
 
-    public String getMakeAndModel() {
-        return makeAndModel;
+    @Test
+    public void setMakeAndModelTest() {
+        entry.setMakeAndModel("C-172");
+        assertEquals("C-172", entry.getMakeAndModel());
     }
 
-    public String getIdentity() {
-        return identity;
+    @Test
+    public void setIdentityTest() {
+        entry.setIdentity("11111");
+        assertEquals("11111", entry.getIdentity());
     }
 
-    public LocationTest getLocation() {
-        return location;
+    @Test
+    public void setLocationTest() {
+        Location l = new Location("SSS", "HHHH");
+        entry.setLocation(l);
+        assertEquals(l, entry.getLocation());
     }
 
-    public TypeOfTimeTest getTypeOfTime() {
-        return typeOfTime;
+    @Test
+    public void setTypeOfTimeTest() {
+        TypeOfTime l = new TypeOfTime("Dual",111.0 );
+        entry.setTypeOfTime(l);
+        assertEquals(l, entry.getTypeOfTime());
     }
 
-    public FlightConditionTest getCondition() {
-        return condition;
+    @Test
+    public void setConditionTest() {
+        FlightCondition l = new FlightCondition("night",true, 1.5);
+        entry.setCondition(l);
+        assertEquals(l, entry.getCondition());
     }
 
-    public int getLandings() {
-        return landings;
+    @Test
+    public void setLandingsTest() {
+        entry.setLandings(10);
+        assertEquals(10, entry.getLandings());
     }
 
-    public int getTotalDuration() {
-        return totalDuration;
+    @Test
+    public void setTotalDurationTest() {
+        entry.setTotalDuration(1.5);
+        assertEquals(1.5, entry.getTotalDuration());
     }
 
-    public String getComments() {
-        return comments;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void setMakeAndModel(String makeAndModel) {
-        this.makeAndModel = makeAndModel;
-    }
-
-    public void setIdentity(String identity) {
-        this.identity = identity;
-    }
-
-    public void setLocation(LocationTest location) {
-        this.location = location;
-    }
-
-    public void setTypeOfTime(TypeOfTimeTest typeOfTime) {
-        this.typeOfTime = typeOfTime;
-    }
-
-    public void setCondition(FlightConditionTest condition) {
-        this.condition = condition;
-    }
-
-    public void setLandings(int landings) {
-        this.landings = landings;
-    }
-
-    public void setTotalDuration(int totalDuration) {
-        this.totalDuration = totalDuration;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
+    @Test
+    public void setCommentsTest() {
+        entry.setComments("hh");
+        assertEquals("hh", entry.getComments());
     }
 }

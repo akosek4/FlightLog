@@ -1,27 +1,28 @@
 package test.model;
 
+import main.model.Location;
+import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LocationTest {
-    private String departure;
-    private String arrival;
+    private Location location = new Location("YVR", "SFO");
 
-    public LocationTest(String departure, String arrival) {
-        this.arrival = arrival;
-        this.departure = departure;
+    @Test
+    public void ConstructorTest() {
+        assertEquals("SFO", location.getArrival());
+        assertEquals("YVR", location.getDeparture());
     }
 
-    public String getArrival() {
-        return arrival;
+    @Test
+    public void setArrivalTest() {
+        location.setArrival("YVR");
+        assertEquals("YVR", location.getArrival());
     }
 
-    public String getDeparture() {
-        return departure;
-    }
-
-    public void setArrival(String arrival) {
-        this.arrival = arrival;
-    }
-
-    public void setDeparture(String departure) {
-        this.departure = departure;
+    @Test
+    public void setDepartureTest() {
+        location.setDeparture("SFO");
+        assertEquals("SFO", location.getDeparture());
     }
 }
