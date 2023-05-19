@@ -10,6 +10,14 @@ public class Entries {
         entries = new ArrayList<>();
     }
 
+    public void addEntry(Entry e) {
+        entries.add(e);
+    }
+
+    public void removeEntry(Entry e) {
+        entries.remove(e);
+    }
+
     public List<Entry> getEntries() {
         return entries;
     }
